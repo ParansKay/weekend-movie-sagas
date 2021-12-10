@@ -15,6 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
+    yield takeEvery('NEW_MOVIE', newMovie);
 }
 
 function* fetchAllMovies() {
@@ -24,7 +25,7 @@ function* fetchAllMovies() {
         console.log('get all movies:', movies.data);
         yield put({ 
             type: 'SET_MOVIES',
-            payload: movies.data }); //if we write movie.data, none of the movies will be appended on the dom
+            payload: movies.data }); 
 
     } catch {
         console.log('get all movies error');
@@ -34,8 +35,8 @@ function* fetchAllMovies() {
 function* fetchAllGenres(action) {
     // get all genres from the DB
     try {
-        const genres = yield axios.get(`/api/genre?id=${action.payload}`);
-        // const genres = yield axios.get(`/api/genre/${action.payload}`);
+        const genres = yield axios.get(`/api/genre?id=${action.payload}`); //using query method
+        // const genres = yield axios.get(`/api/genre/${action.payload}`); // using params method
         console.log('get all genres:', genres.data);
         yield put({ 
             type: 'SET_GENRES', 
@@ -79,13 +80,28 @@ const moviedetail = (state = [], action) => {
     }
 }
 
+const newMovie =(state = {
+    title: '',
+    description: '',
+    imgurl: ''
+    },
+ action) => {
+    switch (action.type) {
+        case 'SET_NEW_MOVIE':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        moviedetail
+        moviedetail,
+        newMovie
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
