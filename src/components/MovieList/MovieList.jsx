@@ -29,7 +29,7 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => { {/* mapping through the store */}
                 const setOneMovie = () => { 
-                    //This function needs to be defined within the mapping.
+                    //This ^^ function needs to be defined within the mapping.
                     // if defined outside, it won't work.
                     dispatch( {
                         type: 'SET_ONE_MOVIE', 

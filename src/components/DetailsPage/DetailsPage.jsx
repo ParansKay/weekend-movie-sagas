@@ -18,7 +18,8 @@ function DetailsPage(){
     return(
         <div>
             <h1>DetailsPage</h1>
-            <div>
+            <section className="movieDetail">
+            <div key={moviedetail.id}>
                 <h4>{moviedetail.title}</h4>
                 <img src={moviedetail.poster} />
                 <h5>{moviedetail.description}</h5>
@@ -33,7 +34,8 @@ function DetailsPage(){
                     );
                 })}
             </div>
-            
+            </section>
+
             <Link to="/">
             <button>go back to Movie List</button>
             </Link>
