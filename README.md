@@ -4,6 +4,16 @@
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+## Database Setup
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+1. Create a database named `saga_movies_weekend`
+2. Run the queries from `database.sql` on the `saga_movies_weekend` database
+
+## Install
+
+`npm install`
+`npm run server`
+`npm run client`
+
+Setup
+[x]Created a details page
