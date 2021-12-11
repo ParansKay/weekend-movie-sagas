@@ -36,8 +36,8 @@ function MovieList() {
                         payload:{
                             id: movie.id, 
                             title: movie.title, 
-                            poster:movie.poster, 
-                            description:movie.description 
+                            poster: movie.poster, 
+                            description: movie.description 
                             }
                         } )
                 }
@@ -46,7 +46,7 @@ function MovieList() {
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
                             <Link to="/details">
-                            <img src={movie.poster} alt={movie.title} onClick={setOneMovie}/>
+                            <img className="imgclass" src={movie.poster} alt={movie.title} onClick={setOneMovie}/>
                             </Link>
                         </div>
                     );

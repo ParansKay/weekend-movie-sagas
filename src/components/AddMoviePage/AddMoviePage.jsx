@@ -19,36 +19,50 @@ import TextField from '@material-ui/core/TextField';
 
 function AddMoviePage(){
     // const[name, setName] = useState( null );
-    const newMovie = useSelector(store => store.newMovie);
+    const dispatch = useDispatch();
+
     const moviedetail = useSelector(store => store.moviedetail);
     const genres = useSelector(store => store.genres);
 
-    // const[movie, setMovie] =useState('');
-    // useEffect(() => {
-    //     dispatch({ 
-    //         type: 'ADD_MOVIE',
-    //         payload: moviedetail.id });
-    // }, []);
-    const [newTitle, setNewTitle] = useState(newMovie.title);
-    
+    //Creating a new variable that allows us to send info updates to the store
+    //default value is the pre-existing values we've given newMovie.title in the store
+    const [newMovie, setNewMovie] = useState({
+        title: '',
+        poster: '',
+        description: '',
+        genre: ''
+    });
+    //updating the value of title based on the input field
     const addTitle = (event) => {
-        setNewTitle(event.target.value);
-        console.log( 'new title is:', newTitle );
+        //changing only the title property in newMovie to the value in our input field
+        setNewMovie({...newMovie, title: event.target.value});
+        console.log( 'new title is:', newMovie.title );
+    };
+     //updating the value of poster based on the input field
+    const addPoster = (event) => {
+        //changing only the poster property in newMovie to the value in our input field
+        setNewMovie({...newMovie, poster: event.target.value});
+        console.log( 'new title is:', newMovie.poster );
+    };
+    //updating the value of description based on the input field
+    const addDescription = (event) => {
+        //changing only the description property in newMovie to the value in our input field
+        setNewMovie({...newMovie, description: event.target.value});
+        console.log( 'new title is:', newMovie.description );
+    };
+    //updating the value of genre based on the input field
+    const addGenre = (event) => {
+        //changing only the genre property in newMovie to the value in our input field
+        setNewMovie({...newMovie, genre: event.target.value});
+        console.log( 'new title is:', newMovie.genre );
     };
 
-    const [newDescription, setNewDescription] = useState(newMovie.description);
-
-    const addDescription =(event) => {
-        setNewDescription(event.target.value);
-        console.log( 'new description is:', newDescription );
-    }
-
-    const [newUrl, setNewUrl] = useState(newMovie.imgurl);
-
-    const addUrl =(event) =>{
-        setNewUrl(event.target.value);
-        console.log( 'new imgurl is:', newUrl);
-    }
+    const addNewMovie = (event) => {
+        dispatch({ 
+            type: 'NEW_MOVIE',
+            payload: newMovie
+        }, []);
+    };
 
     return(
         <div>
@@ -61,8 +75,9 @@ function AddMoviePage(){
                     >
 
                 <Grid item xs={7}>
-                {/* the number inside {} indicates how wide the card can be. Weird. */}
+                {/* the number inside {} indicates how wide the card can be. Weird.*/}
                     <Card className="card" variant="outlined">
+                        {/* HEADER */}
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
                                 <h3>Let's add in a new movie</h3>
@@ -78,8 +93,19 @@ function AddMoviePage(){
                                 defaultValue={newMovie.title}
                                 onChange={ ( event )=>addTitle( event )}
                                 />
+                        </CardContent> 
+                        {/* IMAGE URL INPUT */}
+                        <CardContent>
+                        <TextField
+                                id="outlined-multiline-static"
+                                label="movie poster url"
+                                //lets figure out how to make this box larger!!!!!!!!!!!
+                                rows={4}
+                                defaultValue={newMovie.poster}
+                                onChange={ ( event )=>addPoster( event )}
+                                />
                         </CardContent>  
-                        {/* DESCRIPTION INOUT */}
+                        {/* DESCRIPTION INPUT */}
                         <CardContent>
                         <TextField
                                 id="outlined-multiline-static"
@@ -91,26 +117,51 @@ function AddMoviePage(){
                                 onChange={ ( event )=>addDescription( event )}
                                 />
                         </CardContent> 
-                        {/* IMAGE URL INPUT */}
-                        <CardContent>
-                        <TextField
-                                id="outlined-multiline-static"
-                                label="movie poster"
-                                //lets figure out how to make this box larger!!!!!!!!!!!
-                                rows={4}
-                                defaultValue={newMovie.description}
-                                onChange={ ( event )=>addUrl( event )}
-                                />
-                        </CardContent>  
+                        {/* GENRE DROP DOWN */}
+                       <CardContent>
+                            <FormControl className="formClass" sx={{ m: 1, minWidth: 120 }}>
+                                <InputLabel id="genre-select-label">pick a genre</InputLabel>
+                                    <Select
+                                        labelId="genre-select-label"
+                                        // this ID needs to be the same as the ID of InputLabel ^^
+                                        id="genre-select"
+                                        // but this id needs to be different from the other two above ^^
+                                        value={newMovie.genre}
+                                        label="genreSelect"
+                                        onChange={( event )=>addGenre( event )}
+                                    >
+                                        <MenuItem value="">
+                                            <em>pick a genre</em>
+                                            {/* this is an empty value. when a user clicks on this, the selector box will go back to displaying the label */}
+                                        </MenuItem>
+                                        <MenuItem value={1}>Adventure</MenuItem>
+                                        <MenuItem value={2}>Animated</MenuItem>
+                                        <MenuItem value={3}>Biographical</MenuItem>
+                                        <MenuItem value={4}>Comedy</MenuItem>
+                                        <MenuItem value={5}>Disaster</MenuItem>
+                                        <MenuItem value={6}>Drama</MenuItem>
+                                        <MenuItem value={7}>Epic</MenuItem>
+                                        <MenuItem value={8}>Fantasy</MenuItem>
+                                        <MenuItem value={9}>Musical</MenuItem>
+                                        <MenuItem value={10}>Romantic</MenuItem>
+                                        <MenuItem value={11}>Science Fiction</MenuItem>
+                                        <MenuItem value={12}>Space-Opera</MenuItem>
+                                        <MenuItem value={13}>Superhero</MenuItem>
+                                    </Select>
+                                    <FormHelperText>Select a genre that best describes this movie!</FormHelperText>
+                                    {/* this places a "helper text" for the user under the select box */}
+                            </FormControl>
+                        </CardContent>
+                         {/*BUTTONS  */}
                         <CardActions sx={{ justifyContent: "right" }}> 
                         {/* ^^ centers the button, but not the card itself */}
                             <div className="NextPageButton">
-                                {/* <Link to="/support">
-                                    <Button size="large" variant="outlined" color="secondary" fontSize="large">go back</Button>
+                                <Link to="/">
+                                    <Button size="large" variant="outlined" color="secondary" fontSize="large">Cancel</Button>
                                 </Link>
-                                <Link to="/review">
-                                    <Button className="next" variant="contained" color="secondary" size="large">Next</Button>
-                                </Link> */}
+                                <Link to="/">
+                                    <Button className="next" variant="contained" color="secondary" size="large" onClick={addNewMovie}>Save</Button>
+                                </Link>
                             </div>
                         </CardActions>
                     </Card>
