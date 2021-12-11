@@ -3,6 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import { Link } from 'react-router-dom'; //must define link within each component, otherwise we get an undefined error
 import axios from 'axios';
+//MATERIAL UI IMPORTS
+//MATERIAL UI IMPORTS
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import Grid from '@material-ui/core/Grid';
 
 function MovieList() {
 
@@ -43,11 +52,30 @@ function MovieList() {
                 }
                     return (
                         // appending movie information to the MovieList component
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <Link to="/details">
-                            <img className="imgclass" src={movie.poster} alt={movie.title} onClick={setOneMovie}/>
-                            </Link>
+                        <div>
+                            <Grid
+                                container
+                                alignItems="center"
+                                justify="center"
+                                style={{ maxWidth: '100%', height: 'auto'}}
+                                >
+                                <Grid item xs={10}>
+                                 {/* the number inside {} indicates how wide the card can be. Weird.*/}
+                                    <Card className="card" variant="outlined">
+                                        {/* MOVIE CARDS*/}
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                            <div key={movie.id} >
+                                                <h5>{movie.title}</h5>
+                                                <Link to="/details">
+                                                    <img className="imgclass" src={movie.poster} alt={movie.title} onClick={setOneMovie}/>
+                                                </Link>
+                                            </div>
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                </Grid>
+                            </Grid>
                         </div>
                     );
                 })}

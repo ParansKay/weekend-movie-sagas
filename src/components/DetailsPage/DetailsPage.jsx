@@ -21,7 +21,7 @@ function DetailsPage(){
             <section className="movieDetail">
             <div key={moviedetail.id}>
                 <h4>{moviedetail.title}</h4>
-                <img src={moviedetail.poster} />
+                <img className="imgclass"src={moviedetail.poster} />
                 <h5>{moviedetail.description}</h5>
             </div>
             <div>
