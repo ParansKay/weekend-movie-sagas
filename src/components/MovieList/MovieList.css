@@ -3,7 +3,12 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
-    
+}
+
+.movieListTitle{
+    color: rgb(224, 183, 0);
+    font-family: 'Oswald';
+    font-weight: lighter;
 }
 
 .imgclass{

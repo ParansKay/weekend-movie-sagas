@@ -4,7 +4,6 @@ import './MovieList.css'
 import { Link } from 'react-router-dom'; //must define link within each component, otherwise we get an undefined error
 import axios from 'axios';
 //MATERIAL UI IMPORTS
-//MATERIAL UI IMPORTS
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -12,6 +11,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@material-ui/core/Grid';
+
+
 
 function MovieList() {
 
@@ -34,7 +35,9 @@ function MovieList() {
         <Link to="/addmovie">
         <h2>add a new movie!</h2>
         </Link>
-            <h1>MovieList</h1>
+            <div className="movieListTitle">
+            <h1>Movie List</h1>
+            </div>
             <section className="movies">
                 {movies.map(movie => { {/* mapping through the store */}
                 const setOneMovie = () => { 
