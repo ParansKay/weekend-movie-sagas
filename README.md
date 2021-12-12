@@ -1,4 +1,4 @@
-![License](https://img.shields.io/github/license/ParansKay/weekend-movie-sagas.svg?style=for-the-badge) ![Repo Size](https://img.shields.io/github/languages/code-size/ParansKay/weekend-movie-sagas.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/ParansKay/weekend-movie-sagas.svg?style=for-the-badge) ![FORKS](https://img.shields.io/github/forks/ParansKay/weekend-movie-sagas.svg?style=for-the-badge&social) ![Stars](https://img.shields.io/github/stars/ParansKay/weekend-movie-sagas.svg?style=for-the-badge)
+[Repo Size](https://img.shields.io/github/languages/code-size/ParansKay/weekend-movie-sagas.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/ParansKay/weekend-movie-sagas.svg?style=for-the-badge) ![FORKS](https://img.shields.io/github/forks/ParansKay/weekend-movie-sagas.svg?style=for-the-badge&social) ![Stars](https://img.shields.io/github/stars/ParansKay/weekend-movie-sagas.svg?style=for-the-badge)
     
 # Movie Saga: A Weekend Challenge
 
