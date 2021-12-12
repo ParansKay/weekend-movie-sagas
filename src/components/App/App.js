@@ -6,6 +6,7 @@ import MovieList from '../MovieList/MovieList'
 import DetailsPage from '../DetailsPage/DetailsPage'
 import AddMoviePage from '../AddMoviePage/AddMoviePage'
 import HeaderBar from'../HeaderBar/HeaderBar'
+import { Button } from '@mui/material';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
       <div className="App-header">
       <HeaderBar/>
       </div>
+
+      {/* //ROUTER and LINKS div */}
+      <div className="routerDiv">
       {/* Home page, aka movieList */}
       <Router>        
         <Route path="/" exact>
@@ -29,6 +33,7 @@ function App() {
           <AddMoviePage />
         </Route>
       </Router>
+      </div>
     </div>
   );
 }

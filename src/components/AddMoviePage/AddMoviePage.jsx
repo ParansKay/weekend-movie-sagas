@@ -16,6 +16,13 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@material-ui/core/TextField';
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import HomeIcon from '@mui/icons-material/Home';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Paper from '@mui/material/Paper';
 
 function AddMoviePage(){
     // const[name, setName] = useState( null );
@@ -23,6 +30,10 @@ function AddMoviePage(){
 
     const moviedetail = useSelector(store => store.moviedetail);
     const genres = useSelector(store => store.genres);
+
+    // FIXED NAV BAR
+    const [value, setValue] = React.useState(0);
+    //END FIXED NAV BAR 
 
     //Creating a new variable that allows us to send info updates to the store
     //default value is the pre-existing values we've given newMovie.title in the store
@@ -80,7 +91,7 @@ function AddMoviePage(){
                         {/* HEADER */}
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                <h3>Let's add in a new movie</h3>
+                               Add a new movie:
                             </Typography>
                         </CardContent>
                         {/* TITLE INPUT */}
@@ -157,20 +168,37 @@ function AddMoviePage(){
                         {/* ^^ centers the button, but not the card itself */}
                             <div className="NextPageButton">
                                 <Link to="/">
-                                    <Button size="large" variant="outlined" color="secondary" fontSize="large">Cancel</Button>
+                                    <Button size="large" variant="outlined" color="warning" fontSize="large">Cancel</Button>
                                 </Link>
                                 <Link to="/">
-                                    <Button className="next" variant="contained" color="secondary" size="large" onClick={addNewMovie}>Save</Button>
+                                    <Button className="next" variant="contained" color="warning" size="large" onClick={addNewMovie}>Save</Button>
                                 </Link>
                             </div>
                         </CardActions>
                     </Card>
                 </Grid>      
             </Grid>
+            <div>
+            <div className="bottomNavBar">
+                <Box sx={{ width: 500 }}>
+                    <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+                        <BottomNavigation
+                            showLabels
+                            value={value}
+                            onChange={(event, newValue) => {
+                            setValue(newValue);
+                            }}
+                        >
+                            {/* Link HOME ICON to MovieList page */}
+                            <Link to="/">
+                            <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+                            </Link>
+                        </BottomNavigation>
+                    </Paper>
+                </Box>
+                </div>
+            </div>
         </div>
-        {/* <div>
-            <h2>JSON.stringify {newComment}</h2>
-        </div> */}
     </div>
         
     )
