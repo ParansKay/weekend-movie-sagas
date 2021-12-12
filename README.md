@@ -29,20 +29,20 @@ This is a minimalistic movie library! The app allows the user to view details ab
 
 ## Getting Started
 
-1. Create a database named `saga_movies_weekend`
-2. Run the queries from `database.sql` on the `saga_movies_weekend` database (file is in repo)
+- Create a database named `saga_movies_weekend`
+- Run the queries from `database.sql` on the `saga_movies_weekend` database (file is in repo)
 
 ### Prerequisites
 
-• src/ contains the React application
-• public/ contains static assets for the client-side
-• server/ contains the Express App
+- src/ contains the React application
+- public/ contains static assets for the client-side
+- server/ contains the Express App
 
 ### Installation
 
-• `npm install`
-• `npm run server`
-• `npm run client`
+- `npm install`
+- `npm run server`
+- `npm run client`
 
 
 ## Usage
