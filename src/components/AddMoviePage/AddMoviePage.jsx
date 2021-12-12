@@ -76,7 +76,7 @@ function AddMoviePage(){
     };
 
     return(
-        <div>
+        <div className="newmoviepagemargintop">
             <div>
                 <Grid
                     container
