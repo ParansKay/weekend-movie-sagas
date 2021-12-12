@@ -52,30 +52,39 @@ function MovieList() {
                 }
                     return (
                         // appending movie information to the MovieList component
-                        <div>
+                        <div className="movieListDiv">
+                            <div>
                             <Grid
                                 container
+                                direction="column"
+                                // spacing={0} 
                                 alignItems="center"
                                 justify="center"
-                                style={{ maxWidth: '100%', height: 'auto'}}
+                                // style={{ maxWidth: '50%', maxHeight: '80%'}}
                                 >
-                                <Grid item xs={10}>
+                                <Grid item xs={5} className="movies">
+                                {/* <Grid item xs={5}> //centered the grid columns on the page but made long texts shove images down*/}
                                  {/* the number inside {} indicates how wide the card can be. Weird.*/}
-                                    <Card className="card" variant="outlined">
+                                    <Card className="card" variant="outlined" 
+                                    sx={{minWidth: "400px", 
+                                        minHeight: "380px",
+                                        backgroundColor: "transparent",
+                                        borderRadius: 7,
+                                        boxShadow: 1
+                                }}>
                                         {/* MOVIE CARDS*/}
-                                        <CardContent>
-                                            <Typography gutterBottom variant="h5" component="div">
-                                            <div key={movie.id} >
-                                                <h5>{movie.title}</h5>
+                                        <CardContent key={movie.id}>
+                                            <Typography variant="h6">{movie.title}</Typography>
+                                            <div>
                                                 <Link to="/details">
                                                     <img className="imgclass" src={movie.poster} alt={movie.title} onClick={setOneMovie}/>
                                                 </Link>
                                             </div>
-                                            </Typography>
                                         </CardContent>
                                     </Card>
                                 </Grid>
                             </Grid>
+                            </div>
                         </div>
                     );
                 })}

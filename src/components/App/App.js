@@ -5,12 +5,15 @@ import './App.css';
 import MovieList from '../MovieList/MovieList'
 import DetailsPage from '../DetailsPage/DetailsPage'
 import AddMoviePage from '../AddMoviePage/AddMoviePage'
+import HeaderBar from'../HeaderBar/HeaderBar'
 
 function App() {
   return (
     <div className="App">
-      <h1>The Movies Saga!</h1>
-      
+      <div className="App-header">
+      <HeaderBar/>
+      </div>
+      {/* Home page, aka movieList */}
       <Router>        
         <Route path="/" exact>
           <MovieList />

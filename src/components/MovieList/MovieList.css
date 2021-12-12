@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Oswald&display=swap');
+
 .movies {
     display : flex;
     flex-wrap: wrap;
+    
 }
 
 .imgclass{
     max-width: 185px;
     max-height: 274px;
 }
+
+/* .movieListDiv{
+justify-content: center;
+align-items: center;
+} */

@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Oswald&display=swap');
+
 .App {
   text-align: center;
+  background-color: rgb(41, 41, 41);
 }
 
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: auto;
   padding: 20px;
-  color: white;
+  color: rgb(255, 255, 255);
+  font-family: 'Oswald';
+  font-weight: 200;
 }
 
 .App-title {
